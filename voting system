@@ -1,0 +1,60 @@
+#include <stdio.h>
+#include <string.h>
+
+int main() {
+    int voters, participants, vote;
+    printf("Enter the number of participants: ");
+    scanf("%d", & participants );
+    char names[participants][50];  
+    int votes[participants];
+    for (int i = 0; i < participants; i++) {
+        votes[i] = 0;
+    }
+    printf("Enter the names of participants:\n");
+    for (int i = 0; i < participants; i++) {
+        printf("Participant %d: ", i + 1);
+        scanf("%s", names[i]);
+    }
+    printf("\nEnter the number of voters: ");
+    scanf("%d", &voters);
+    for (int i = 0; i < voters; i++) {
+        printf("\nVoter %d, select a participant by entering the number:\n", i + 1);
+        for (int j = 0; j < participants; j++) {
+            printf("%d. %s\n", j + 1, names[j]);
+        }
+        printf("Your vote: ");
+        scanf("%d", &vote);
+
+        if (vote >= 1 && vote <= participants) {
+            votes[vote - 1]++;
+        } else {
+            printf("Invalid vote!\n");
+        }
+    }
+    printf("\nVoting Results:\n");
+    for (int i = 0; i < participants; i++) {
+        printf("%s received %d votes.\n", names[i], votes[i]);
+    }
+    int maxVotes = 0, winnerIndex = 0;
+    for (int i = 0; i < participants; i++) {
+        if (votes[i] > maxVotes) {
+            maxVotes = votes[i];
+            winnerIndex = i;
+        }
+    }
+    int tie = 0;
+    for (int i = 0; i < participants; i++) {
+        if (votes[i] == maxVotes && i != winnerIndex) {
+            tie = 1;
+            break;
+        }
+    }
+
+    if (tie) {
+        printf("It's a tie!\n");
+    } else {
+        printf("%s is the winner with %d votes!\n", names[winnerIndex], maxVotes);
+    }
+
+    return 0;
+}
