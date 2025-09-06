@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Countdown Timer</title>
+</head>
+<body>
+  <h2>⏳ Countdown Timer</h2>
+  <p id="timer"></p>
+  <script>
+    let count = 10;
+    let x = setInterval(() => {
+      document.getElementById("timer").innerHTML = count;
+      count--;
+      if (count < 0) {
+        clearInterval(x);
+        document.getElementById("timer").innerHTML = "Time’s Up!";
+      }
+    }, 1000);
+  </script>
+</body>
+</html>
