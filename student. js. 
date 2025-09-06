@@ -1,0 +1,15 @@
+document.getElementById("studentForm").addEventListener("submit", function(e) {
+  e.preventDefault();
+
+  let name = document.getElementById("name").value;
+  let email = document.getElementById("email").value;
+  let phone = document.getElementById("phone").value;
+  let course = document.getElementById("course").value;
+
+  document.getElementById("output").innerHTML = 
+    `<b>Registration Successful ✅</b><br>
+     Name: ${name}<br>
+     Email: ${email}<br>
+     Phone: ${phone}<br>
+     Course: ${course}`;
+});
