@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>To-Do List</title>
+  <style>
+    body { font-family: Arial; margin: 20px; }
+    input { padding: 8px; }
+    button { padding: 8px; margin-left: 5px; }
+    li { margin: 5px; }
+  </style>
+</head>
+<body>
+  <h2>📝 To-Do List</h2>
+  <input id="taskInput" placeholder="Enter task">
+  <button onclick="addTask()">Add</button>
+  <ul id="taskList"></ul>
+  <script>
+    function addTask() {
+      let input = document.getElementById("taskInput");
+      let li = document.createElement("li");
+      li.innerHTML = input.value + " <button onclick='this.parentElement.remove()'>❌</button>";
+      document.getElementById("taskList").appendChild(li);
+      input.value = "";
+    }
+  </script>
+</body>
+</html>
